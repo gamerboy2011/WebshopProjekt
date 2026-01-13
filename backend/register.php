@@ -12,14 +12,14 @@ $adress = $data["adress"] ?? "";
 $phonenum = $data["phonenum"] ?? "";
 $email = $data["email"] ?? "";
 $password = $data["passwordhash"] ?? "";
-$createdat = $data["createdat"] ?? "";
+//$createdat = $data["createdat"] ?? "";
 
 if (!$name || !$adress || !$phonenum || !$email || !$password) { 
     http_response_code(400);
     echo json_encode(["error" => "Missing required fields!"]);
     exit;
 }
-$sql = "INSERT INTO users (username, adress, phonenum, email, passwordhash) VALUES (:username ,:adress, :phonenum, :email, :passwordhash)";
+$sql = "INSERT INTO users (Username, Adress, PhoneNum, Email, PasswordHash) VALUES (:username ,:adress, :phonenum, :email, :passwordhash)";
 $stmt = $conn->prepare($sql);
 $stmt->execute(['username' => $username, 'adress'=> $adress, 'phonenum' => $phonenum, 'email' => $email, 'passwordhash' => $passwordhash ]);
 
